@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitHub - Gym Class Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <h1>FitHub</h1>
+            </div>
+            <p class="subtitle">Your premier fitness class booking platform</p>
+        </header>
+
+        <!-- Membership Status -->
+        <div class="membership-card">
+            <div class="membership-info">
+                <h2>Welcome back, Alex!</h2>
+                <p>Premium Member • <span id="credits">15</span> credits remaining</p>
+            </div>
+            <div class="membership-stats">
+                <div class="stat">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Classes Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="credits-display">15</div>
+                    <div class="stat-label">Credits Left</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-label">Avg Rating</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="date-section">
+                    <h3><i class="fas fa-calendar"></i> Select Date</h3>
+                    <label for="date-picker" class="visually-hidden">Choose a date</label>
+                    <input type="date" id="date-picker" class="date-input" title="Choose a date" placeholder="YYYY-MM-DD">
+                </div>
+
+                <div class="bookings-section">
+                    <h3>My Bookings</h3>
+                    <div id="user-bookings" class="bookings-list">
+                        <p class="no-bookings">No bookings yet</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="classes-header">
+                    <h2>Available Classes - <span id="selected-date"></span></h2>
+                </div>
+
+                <div id="classes-grid" class="classes-grid">
+                    <!-- Classes will be populated by JavaScript -->
+                </div>
+
+                <!-- Trainers Section -->
+                <div class="trainers-section">
+                    <h2>Meet Our Trainers</h2>
+                    <div class="trainers-grid">
+                        <div class="trainer-card">
+                            <div class="trainer-avatar">👩‍🏫</div>
+                            <h3>Sarah Chen</h3>
+                            <p class="trainer-specialty">Yoga & Meditation</p>
+                            <p class="trainer-experience">8 years experience</p>
+                            <div class="trainer-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <p class="trainer-bio">Certified yoga instructor specializing in Vinyasa and Hatha yoga</p>
+                        </div>
+
+                        <div class="trainer-card">
+                            <div class="trainer-avatar">👨‍🏫</div>
+                            <h3>Mike Johnson</h3>
+                            <p class="trainer-specialty">HIIT & Cardio</p>
+                            <p class="trainer-experience">6 years experience</p>
+                            <div class="trainer-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <p class="trainer-bio">Former athlete turned fitness coach, loves high-energy workouts</p>
+                        </div>
+
+                        <div class="trainer-card">
+                            <div class="trainer-avatar">🏋️‍♂️</div>
+                            <h3>Alex Rodriguez</h3>
+                            <p class="trainer-specialty">Strength Training</p>
+                            <p class="trainer-experience">10 years experience</p>
+                            <div class="trainer-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <p class="trainer-bio">Powerlifting champion and certified strength & conditioning coach</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for Class Details -->
+    <div id="class-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-class-name"></h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-class-icon" id="modal-class-icon"></div>
+                <p id="modal-class-description"></p>
+                <div class="modal-details">
+                    <div class="detail-row">
+                        <span>Instructor:</span>
+                        <span id="modal-instructor"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Time:</span>
+                        <span id="modal-time"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Duration:</span>
+                        <span id="modal-duration"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Difficulty:</span>
+                        <span id="modal-difficulty" class="difficulty-badge"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Price:</span>
+                        <span id="modal-price"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-book-btn" class="book-btn" onclick="bookFromModal()">Book This Class</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
